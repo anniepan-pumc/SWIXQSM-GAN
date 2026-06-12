@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "swixqsm-gan"
+version = "0.1.0"
+description = "Synthetic QSM generation from routine SWI using a 2D GAN."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [
+  { name = "Pan X" }
+]
+dependencies = [
+  "matplotlib==3.10.0",
+  "nibabel==5.3.2",
+  "numpy==2.2.2",
+  "pandas==2.2.3",
+  "Pillow==11.1.0",
+  "pydicom==3.0.1",
+  "scipy==1.15.1",
+  "SimpleITK==2.4.0",
+  "scikit-image==0.25.0",
+  "torch==2.5.1",
+  "torchmetrics==1.6.1",
+  "torchvision==0.20.1",
+  "tqdm==4.66.5",
+  "jax==0.5.0"
+]
+
+[project.scripts]
+swixqsm-train = "train_swixqsm_gan:main"
+swixqsm-validate = "validate_swi_qsm:main"
+
+[tool.setuptools]
+py-modules = ["batch_validate_swi_qsm", "qsm_gt_path", "train_swixqsm_gan", "validate_swi_qsm"]
+packages = [
+  "swixqsm_gan",
+  "swixqsm_gan.models",
+  "swixqsm_gan.data",
+  "swixqsm_gan.training",
+  "swixqsm_gan.inference",
+  "model",
+  "data",
+  "utils",
+  "utils.losses"
+]
