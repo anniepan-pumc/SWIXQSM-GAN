@@ -1,0 +1,43 @@
+# Local datasets and medical imaging
+*.nii
+*.nii.gz
+*.dcm
+*.dicom
+*.ima
+*.IMA
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
+# Local cohort tables; keep the public example manifest tracked
+/data/*.csv
+/data/*.tsv
+/data/*.xlsx
+/data/*.xls
+/ukb_data_summary*.csv
+/badzip.csv
+
+# Trained model weights and checkpoints
+*.pt
+*.pth
+*.ckpt
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.safetensors
+/weights/
+/checkpoints/
+/save/
+/output/
+/outputs/
+
+# Audit reports can contain participant identifiers
+ukb_audit_reports/
+
+# Local Python environment and generated caches
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
