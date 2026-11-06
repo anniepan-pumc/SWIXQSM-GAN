@@ -1,0 +1,9 @@
+{
+  "schema": "swixqsm.recipe",
+  "version": 1,
+  "name": "swixqsm_c2",
+  "architecture": "swixqsm_gan",
+  "lambda_l1": 100.0,
+  "lambda_adv": 0.1,
+  "description": "Revision Wave C2; weak adversarial SWIXQSM generator"
+}

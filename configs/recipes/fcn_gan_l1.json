@@ -1,0 +1,8 @@
+{
+  "schema": "swixqsm.recipe",
+  "version": 1,
+  "name": "fcn_gan_l1",
+  "architecture": "fcn_gan_l1",
+  "lambda_l1": 0.2,
+  "lambda_adv": 1.0
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "swixqsm.model_selection_record",
+  "version": 1,
+  "checkpoint_path": "/checkpoints/actual_frozen.pt",
+  "checkpoint_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "selection_basis": "fixed_before_test",
+  "test_feedback_used": false,
+  "validation_used": false,
+  "source": "REPLACE_WITH_ACTUAL_FINAL_CHECKPOINT_RULE_EPOCH_AND_LOG_SOURCE",
+  "evidence_files": []
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "swixqsm.github_package",
+  "version": "0.2.0",
+  "n_files": 146,
+  "includes_weights": false,
+  "includes_c2_recipe": true,
+  "top_level": [
+    ".gitignore",
+    ".zenodo.json",
+    "AUTHORS.md",
+    "CITATION.cff",
+    "LICENSE",
+    "README.md",
+    "configs",
+    "environment.yml",
+    "pyproject.toml",
+    "requirements.txt",
+    "swixqsm_minimal"
+  ],
+  "repository": "https://github.com/anniepan-pumch/SWIXQSM-GAN"
+}

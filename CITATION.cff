@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use SWIXQSM-GAN, please cite this software."
+title: "SWIXQSM-GAN: Synthetic QSM from Routine SWI for Brain Susceptibility Biomarker Assessment"
+version: "0.1.0"
+date-released: "2026-06-02"
+authors:
+  - family-names: "Pan"
+    given-names: "Xingqi"
+abstract: "SWIXQSM-GAN is a two-dimensional deep learning framework for synthesizing quantitative susceptibility mapping-like images from routine susceptibility-weighted imaging for brain susceptibility biomarker assessment."
+keywords:
+  - quantitative susceptibility mapping
+  - susceptibility-weighted imaging
+  - deep learning
+  - brain iron
+  - susceptibility biomarkers
+license: MIT
+repository-code: "https://github.com/anniepan-pumch/SWIXQSM-GAN"
+preferred-citation:
+  type: article
+  title: "SWIXQSM-GAN: Synthetic Quantitative Susceptibility Mapping from Routine Susceptibility-Weighted MRI"
+  authors:
+    - family-names: "Pan"
+      given-names: "Xingqi"
+  year: 2026
+  notes: "Manuscript in preparation. Update this entry with journal, DOI, and coauthors before release."
+

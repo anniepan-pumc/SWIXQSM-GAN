@@ -1,0 +1,14 @@
+{
+  "schema": "swixqsm.roi_spec",
+  "version": 1,
+  "id": "replace_with_prespecified_region_set_id",
+  "definition": "FORMAT EXAMPLE ONLY. Replace all region names and label IDs using the actual anatomical dictionary and study protocol.",
+  "label_source": "AUTHOR_INPUT_NEEDED: actual segmentation or atlas version, native-grid mapping and anatomical QC provenance",
+  "regions": [
+    {"name": "replace_left_region", "labels": [101]},
+    {"name": "replace_right_region", "labels": [201]},
+    {"name": "replace_bilateral_region", "labels": [101, 201]}
+  ],
+  "min_coverage": 1.0,
+  "min_voxels": 1
+}

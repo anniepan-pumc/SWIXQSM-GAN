@@ -1,0 +1,4 @@
+subject_id,split,swi_path,qsm_path,swi_mask_path,mask_path,qsm_units,qsm_reference,space_id,prediction_path,prediction_units,prediction_reference,cohort,case_id
+example_train_01,train,/prepared/train01/SWI.nii.gz,/prepared/train01/QSM.nii.gz,/prepared/train01/swi_brain_mask.nii.gz,/prepared/train01/valid_mask.nii.gz,ppm,actual_reference_id,prepared_common_space,,,,example_cohort,train01
+example_train_02,train,/prepared/train02/SWI.nii.gz,/prepared/train02/QSM.nii.gz,/prepared/train02/swi_brain_mask.nii.gz,/prepared/train02/valid_mask.nii.gz,ppm,actual_reference_id,prepared_common_space,,,,example_cohort,train02
+example_test_01,test,/prepared/test01/SWI.nii.gz,/prepared/test01/QSM.nii.gz,/prepared/test01/swi_brain_mask.nii.gz,/prepared/test01/valid_mask.nii.gz,ppm,actual_reference_id,prepared_common_space,/predictions/test01_QSM.nii.gz,ppm,actual_reference_id,example_cohort,test01

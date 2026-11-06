@@ -1,43 +1,51 @@
-# Local datasets and medical imaging
-*.nii
-*.nii.gz
-*.dcm
-*.dicom
-*.ima
-*.IMA
-*.zip
-*.tar
-*.tar.gz
-*.tgz
+.DS_Store
+.idea/
+.vscode/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
 
-# Local cohort tables; keep the public example manifest tracked
-/data/*.csv
-/data/*.tsv
-/data/*.xlsx
-/data/*.xls
-/ukb_data_summary*.csv
-/badzip.csv
-
-# Trained model weights and checkpoints
+# Weights and large artifacts — never commit
 *.pt
 *.pth
 *.ckpt
+*.onnx
+*.tar
+*.zip
+
+# Imaging / PHI
+*.nii
+*.nii.gz
+*.dcm
+*.mat
+*.mgz
+*.mgh
+
+# Local runs
+outputs/
+runs/
+experiments/
+*.log
+*.tmp
+
+# Official audit-tool report directory (name fixed by the tool)
+REPOSITORY_AUDIT_REPORT*.csv
+eid_frequency_*.csv
+AUDIT_SUMMARY_*.html
+
+# Additional serialized weights and local audit artifacts
 *.h5
 *.hdf5
 *.pkl
 *.pickle
 *.safetensors
-/weights/
-/checkpoints/
-/save/
-/output/
-/outputs/
-
-# Audit reports can contain participant identifiers
+*.bin
+weights/
+checkpoints/
 ukb_audit_reports/
-
-# Local Python environment and generated caches
-.venv/
-__pycache__/
-*.py[cod]
-.DS_Store

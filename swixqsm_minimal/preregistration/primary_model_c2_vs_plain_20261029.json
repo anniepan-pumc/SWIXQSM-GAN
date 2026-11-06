@@ -1,0 +1,90 @@
+{
+  "schema": "swixqsm.primary_model_preregistration",
+  "version": 1,
+  "registered_at": "2026-10-29T14:34:21+08:00",
+  "question": "May the weakly adversarial SWIXQSM generator (C2) replace the L1-only U-Net as the primary reported model?",
+  "candidate": {
+    "label": "C2",
+    "description": "Wave C run 'C2 adv0.1': SWIXQSM generator, lambda_l1=100, lambda_adv=0.1, checkpoint best_gan.pt (val best at GAN epoch 31)",
+    "expected_phase": "gan"
+  },
+  "comparator": {
+    "label": "plain_unet",
+    "description": "Wave A plain_unet: same generator family, lambda_l1=1, lambda_adv=0, checkpoint best_l1.pt (val best at epoch 83)",
+    "expected_phase": "l1"
+  },
+  "default_rule_before_this_registration": "The Wave A/B/C protocol selects by val stored_participant_equal_mae; under that rule plain_unet is primary.",
+  "known_before_registration": {
+    "val_participant_mae": {"plain_unet": 10.48, "C2": 10.74, "zero": 14.83},
+    "test_participant_mae": {"plain_unet": 10.51, "C2": 10.77},
+    "val_other_metrics": {
+      "plain_unet": {"rmse": 16.87, "nmse": 0.484, "psnr_db": 46.20, "ssim": 0.940, "hfen": 4.50},
+      "C2": {"rmse": 17.25, "nmse": 0.506, "psnr_db": 46.01, "ssim": 0.938, "hfen": 4.58}
+    },
+    "seed_variability_val_mae": {"swixqsm_lambda100_seed42": 11.49, "swixqsm_lambda100_seed43": 11.32}
+  },
+  "not_computed_before_registration": [
+    "high-frequency power ratio, high-frequency correlation and SD ratio on any split",
+    "any prediction, voxel metric or ROI value of C2 or plain_unet in the external cohorts"
+  ],
+  "internal": {
+    "split": "val",
+    "unit_of_analysis": "participant; visits pooled within participant before equal weighting",
+    "bootstrap": {"method": "paired participant resampling, percentile interval", "replicates": 10000, "seed": 20261029, "confidence": 0.95},
+    "high_frequency": {
+      "definition": "h = x - S(x), S = in-plane Gaussian smoothing normalized by the smoothed evaluation mask (no smoothing across slices, matching the 2D generator)",
+      "sigma_mm": 1.5,
+      "support": "evaluation-mask voxels whose smoothed mask weight is >= interior_weight",
+      "interior_weight": 0.99
+    },
+    "endpoints": {
+      "delta_mae": "MAE(C2) - MAE(plain_unet), evaluation mask, input storage units",
+      "delta_abs_log_hf_power_ratio": "|log(sum h_C2^2 / sum h_ref^2)| - |log(sum h_plain^2 / sum h_ref^2)|; negative means C2 high-frequency energy is closer to the reference",
+      "delta_hf_correlation": "pearson(h_C2, h_ref) - pearson(h_plain, h_ref) over the high-frequency support"
+    },
+    "criteria": {
+      "A_mae_noninferiority": {
+        "rule": "upper CI bound of mean delta_mae < mae_margin_fraction_of_gain * mean(MAE(zero) - MAE(plain_unet))",
+        "mae_margin_fraction_of_gain": 0.10
+      },
+      "B_less_oversmoothing": {
+        "rule": "upper CI bound of mean delta_abs_log_hf_power_ratio < 0"
+      },
+      "C_no_loss_of_correct_detail": {
+        "rule": "lower CI bound of mean delta_hf_correlation > -hf_correlation_margin",
+        "hf_correlation_margin": 0.02
+      }
+    }
+  },
+  "external": {
+    "cohort_list": "swixqsm_minimal/cohort_lists/external_validation_frozen_20261021.csv",
+    "cohort_list_sha256": "e86724d0a264b84773d04e024a87b5cda88eba650880bcf188662e8532f2b451",
+    "participants": "Shunyi roi_primary and CSVD roi_primary passing the prespecified MuSus registration QC",
+    "reference": "REF_ILSQR",
+    "rois": {
+      "caudate": ["R-Cau", "L-Cau"],
+      "putamen": ["R-Pu", "L-Pu"],
+      "globus_pallidus": ["R-GPe", "L-GPe", "R-GPi", "L-GPi"],
+      "substantia_nigra": ["R-SNc", "L-SNc", "R-SNr", "L-SNr"],
+      "red_nucleus": ["R-RN", "L-RN"],
+      "dentate_nucleus": ["R-DN", "L-DN"]
+    },
+    "roi_aggregation": "bilateral voxel-count-weighted mean in the reference QSM grid",
+    "criteria": {
+      "D_external_roi_noninferiority": {
+        "rule": "mean over ROIs of ICC(A,1)(C2 vs reference) >= mean over ROIs of ICC(A,1)(plain_unet vs reference) - icc_margin, both cohorts pooled, computed once",
+        "icc_margin": 0.05
+      }
+    }
+  },
+  "decision": {
+    "c2_primary_if": "A, B, C and D all hold",
+    "otherwise": "plain_unet is primary; C2 is reported as the best adversarial variant",
+    "reporting": "Both models appear in every internal and external table regardless of the decision; no endpoint, threshold or ROI is added, removed or changed after this file is hashed"
+  },
+  "disclosure": [
+    "Margin A was set after the internal val/test MAE point estimates were known; criterion A therefore carries little evidential weight and must be described as such.",
+    "Criteria B, C and D were defined before their endpoints were computed on any data.",
+    "Wave runs deviated from the written Wave B/C plan (50 instead of 30 epochs; C1 and C3 configurations differ from the plan); these deviations are reported in the supplement."
+  ]
+}

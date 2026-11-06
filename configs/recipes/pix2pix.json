@@ -1,0 +1,8 @@
+{
+  "schema": "swixqsm.recipe",
+  "version": 1,
+  "name": "pix2pix",
+  "architecture": "pix2pix",
+  "lambda_l1": 100.0,
+  "lambda_adv": 1.0
+}

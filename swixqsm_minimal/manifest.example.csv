@@ -1,0 +1,3 @@
+subject_id,split,swi_path,qsm_path,swi_mask_path,mask_path,qsm_units
+example_train,train,/prepared/train/SWI.nii.gz,/prepared/train/QSM.nii.gz,/prepared/train/swi_brain_mask.nii.gz,/prepared/train/valid_mask.nii.gz,ppm
+example_val,val,/prepared/val/SWI.nii.gz,/prepared/val/QSM.nii.gz,/prepared/val/swi_brain_mask.nii.gz,/prepared/val/valid_mask.nii.gz,ppm

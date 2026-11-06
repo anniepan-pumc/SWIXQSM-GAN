@@ -1,0 +1,8 @@
+{
+  "schema": "swixqsm.recipe",
+  "version": 1,
+  "name": "plain_unet",
+  "architecture": "plain_unet",
+  "lambda_l1": 1.0,
+  "lambda_adv": 0.0
+}

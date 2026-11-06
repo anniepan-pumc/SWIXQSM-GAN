@@ -1,0 +1,20 @@
+{
+  "schema": "swixqsm.data_contract",
+  "version": 1,
+  "geometry": {
+    "axis_codes": ["R", "A", "S"],
+    "slice_axis": 2,
+    "spacing_mm_min": [0.75, 0.75, 1.4],
+    "spacing_mm_max": [0.9, 0.9, 3.1],
+    "max_obliquity_deg": 15
+  },
+  "reference": {
+    "id": "actual_reference_id",
+    "method": "mean",
+    "region": "actual_reference_region",
+    "target_ppb": 0,
+    "tolerance_ppb": 1,
+    "require_mask": true
+  },
+  "registration": {"require_review": true}
+}
